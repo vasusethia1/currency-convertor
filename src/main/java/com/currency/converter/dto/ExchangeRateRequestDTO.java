@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @Builder
@@ -28,5 +29,5 @@ public class ExchangeRateRequestDTO {
     private String targetCurrency;
 
     @Schema(description = "Date for historical rate (optional)", example = "2024-04-15")
-    private LocalDate date;
+    private LocalDateTime date;
 }

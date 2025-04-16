@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @Builder
@@ -35,5 +36,5 @@ public class ConversionRequestDTO {
 
     @PastOrPresent(message = "Date cannot be in the future")
     @Schema(description = "Date for historical conversion (optional, defaults to current date)", example = "2024-04-15")
-    private LocalDate date;
+    private LocalDateTime date;
 }
