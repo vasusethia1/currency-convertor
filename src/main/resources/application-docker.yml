@@ -4,8 +4,8 @@ server:
 spring:
   datasource:
     url: jdbc:postgresql://postgres:5432/currency_converter
-    username: postgres
-    password: postgres
+    username:
+    password:
     driver-class-name: org.postgresql.Driver
 
   jpa:
@@ -30,7 +30,7 @@ spring:
 exchange:
   api:
     url: https://api.exchangeratesapi.io/v1/latest
-    key: dee5e2358799c23c4de647b9a381cc95
+    key:
 
 scheduling:
   enabled: true
