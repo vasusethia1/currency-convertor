@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   app:
-    image: amitdobal/currency-converter:latest
+    image: vasusethia/currency-convertor:latest
     ports:
       - "8080:8080"
     environment:
@@ -14,11 +14,16 @@ services:
       - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.PostgreSQLDialect
       - SPRING_JPA_PROPERTIES_HIBERNATE_FORMAT_SQL=true
       - SPRING_JPA_SHOW_SQL=true
+      - SPRING_REDIS_HOST=redis
+      - SPRING_REDIS_PORT=6379
       - SERVER_PORT=8080
       - LOGGING_LEVEL_ROOT=INFO
       - LOGGING_LEVEL_COM_CURRENCY_CONVERTER=DEBUG
+      - EXCHANGE_API_KEY=dee5e2358799c23c4de647b9a381cc95
     depends_on:
       postgres:
+        condition: service_healthy
+      redis:
         condition: service_healthy
     networks:
       - currency-network
@@ -28,6 +33,7 @@ services:
       timeout: 10s
       retries: 3
       start_period: 40s
+    restart: unless-stopped
 
   postgres:
     image: postgres:15-alpine
@@ -46,6 +52,21 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    networks:
+      - currency-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
 
 volumes:
   postgres_data:

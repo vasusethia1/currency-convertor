@@ -1,19 +1,39 @@
+server:
+  port: 8080
+
 spring:
   datasource:
     url: jdbc:postgresql://postgres:5432/currency_converter
     username: postgres
     password: postgres
+    driver-class-name: org.postgresql.Driver
+
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: true
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
+    show-sql: true
 
-server:
-  port: 8080
+  spring:
+    host: redis
+    port: 6379
+  cache:
+    type: redis
+    redis:
+      time-to-live: 86400000  # 24 hours in milliseconds
+      cache-null-values: false
+
+
+exchange:
+  api:
+    url: https://api.exchangeratesapi.io/v1/latest
+    key: dee5e2358799c23c4de647b9a381cc95
+
+scheduling:
+  enabled: true
 
 logging:
   level:
