@@ -2,11 +2,6 @@ package com.currency.converter.service;
 
 import com.currency.converter.dto.ExchangeRateDTO;
 import com.currency.converter.dto.ExchangeRateRequestDTO;
-import com.currency.converter.dto.ConversionRequestDTO;
-
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 public interface ExchangeRateService {
 

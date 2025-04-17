@@ -1,7 +1,6 @@
 package com.currency.converter.controller;
 
 import com.currency.converter.dto.ApiResponseDTO;
-import com.currency.converter.dto.ConversionRequestDTO;
 import com.currency.converter.dto.ExchangeRateDTO;
 import com.currency.converter.dto.ExchangeRateRequestDTO;
 import com.currency.converter.service.ExchangeRateService;
